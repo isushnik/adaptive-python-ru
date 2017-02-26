@@ -5,21 +5,14 @@ def roman_to_decimal(n):
     roman = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
     arabic = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
 
-    lst = []
-    i = 0
+    i, res = 0, 0
     while i < len(n):
-        if i == len(n) - 1:
-            lst.append(n[i])
-            i += 1
-        elif roman.index(n[i]) <= roman.index(n[i+1]):
-            lst.append(n[i])
+        if i == len(n) - 1 or roman.index(n[i]) <= roman.index(n[i+1]):
+            res += arabic[roman.index(n[i])]
             i += 1
         else:
-            lst.append(n[i:i+2])
+            res += arabic[roman.index(n[i:i+2])]
             i += 2
-    res = 0
-    for num in lst:
-        res += arabic[roman.index(num)]
 
     return res
 
