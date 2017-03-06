@@ -1,3 +1,8 @@
-# {−10}∪(−5,3]∪(8,12)∪[16,+∞)
-n = int(input())
-print((n == -10) or (-5 < n <= 3) or (8 < n < 12) or (n >= 16))
+string, substring = input().strip(), input().strip()
+
+n = len(substring)
+res = [i for i in range(len(string) - n + 1) if string[i:i+n] == substring]
+if not res:
+    print(-1)
+else:
+    print(*res)
