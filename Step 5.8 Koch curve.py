@@ -1,9 +1,12 @@
-def koch(n):
+import turtle
+
+
+def koch_turns(n):
     angles = [60, -120, 60]
     if n == 1:
         return angles
     else:
-        kch = koch(n-1)
+        kch = koch_turns(n-1)
         res = []
         for i in range(7):
             if i % 2 == 0:
@@ -12,6 +15,12 @@ def koch(n):
                 res.append(angles[(i - 1) // 2])
         return res
 
-res = koch(int(input()))
-for a in res:
-    print('turn', a)
+
+def koch_curve(n, line_length=10):
+    for move in koch_turns(n):
+        turtle.forward(line_length)
+        turtle.left(move)
+    turtle.forward(line_length)
+    turtle.exitonclick()
+
+koch_curve(3)
