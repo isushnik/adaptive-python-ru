@@ -16,20 +16,16 @@ def move(i: int, j: int):
 # n = int(input())
 n = 3
 pigs = [[i for i in range(n, 0, -1)], [], []]
-# print('pigs', pigs)
 
+if n % 2 == 0:
+    steps = [[0, 1], [0, 2], [1, 2]]
+else:
+    steps = [[0, 2], [0, 1], [1, 2]]
 
+print(pigs)
 while len(pigs[-1]) != n:
-    if n % 2 == 0:
-        move(0, 1)
+    for s in steps:
         if len(pigs[-1]) != n:
-            move(0, 2)
-    else:
-        move(0, 2)
-        if len(pigs[-1]) != n:
-            move(0, 1)
-    if len(pigs[-1]) != n:
-        move(1, 2)
-
+            move(*s)
 
 print(pigs)
